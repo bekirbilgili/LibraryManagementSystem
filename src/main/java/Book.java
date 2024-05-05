@@ -1,6 +1,7 @@
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "book")
 public class Book {
 
     @Id
