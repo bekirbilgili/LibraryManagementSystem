@@ -9,7 +9,7 @@ public class Book {
     @Column(name = "book_id")
     private int id;
 
-    @Column(name = "book_name")
+    @Column(name = "book_name", nullable = false)
     private String name;
 
     @Column(name = "book_publication_year")
