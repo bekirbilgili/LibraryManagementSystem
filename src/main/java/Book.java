@@ -17,4 +17,12 @@ public class Book {
 
     @Column(name = "book_stock")
     private int stock;
+
+    @ManyToOne
+    @JoinColumn(name = "book_author_id", referencedColumnName = "author_id")
+    private Author author;
+
+    @ManyToOne
+    @JoinColumn(name = "book_publisher_id", referencedColumnName = "publisher_id")
+    private Publisher publisher;
 }

@@ -1,6 +1,7 @@
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="author")
@@ -18,5 +19,8 @@ public class Author {
 
     @Column(name="author_country")
     private String country;
+
+    @OneToMany(mappedBy = "author")
+    private List<Book> bookList;
 
 }

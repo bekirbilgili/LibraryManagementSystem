@@ -1,5 +1,7 @@
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table
 public class Publisher {
@@ -15,6 +17,9 @@ public class Publisher {
     @Column(name="publisher_est_year")
     private String establishmentYear;
 
-    @Column(name="publisher_addrress")
+    @Column(name="publisher_address")
     private String address;
+
+    @OneToMany(mappedBy = "publisher")
+    private List<Book> bookList;
 }
