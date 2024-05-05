@@ -21,7 +21,7 @@ public class BookBorrowing {
     @Column(name = "return_date", nullable = true)
     private LocalDate returnDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "borrowed_book_id", referencedColumnName = "book_id")
     private Book book;
 

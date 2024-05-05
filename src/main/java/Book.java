@@ -20,22 +20,22 @@ public class Book {
     @Column(name = "book_stock")
     private int stock;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "book_author_id", referencedColumnName = "author_id")
     private Author author;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinTable(name = "book2category",
             joinColumns = {@JoinColumn(name = "book2category_book_id")},
             inverseJoinColumns = {@JoinColumn(name = "book2category_category_id")}
     )
     private List<Category> categoryList;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
     private List<BookBorrowing> borrowingList;
 
     public Book() {
