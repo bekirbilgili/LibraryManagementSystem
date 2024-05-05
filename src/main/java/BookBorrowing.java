@@ -1,6 +1,7 @@
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "book_borrowing")
@@ -19,4 +20,9 @@ public class BookBorrowing {
 
     @Column(name = "return_date", nullable = true)
     private LocalDate returnDate;
+
+    @ManyToOne
+    @JoinColumn(name = "borrowed_book_id", referencedColumnName = "book_id")
+    private Book book;
+
 }
