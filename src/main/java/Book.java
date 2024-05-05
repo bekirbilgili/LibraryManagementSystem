@@ -1,5 +1,7 @@
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "book")
 public class Book {
@@ -25,4 +27,11 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "book_publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;
+
+    @ManyToMany
+    @JoinTable(name = "book2category",
+            joinColumns = {@JoinColumn(name = "book2category_book_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book2category_category_id")}
+    )
+    private List<Category> categoryList;
 }
